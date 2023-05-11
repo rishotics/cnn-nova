@@ -2,15 +2,15 @@ pragma circom 2.0.0;
 
 /*This circuit template checks that c is the multiplication of a and b.*/  
 
-template Multiplier2 () {  
+template ImageRecognitionSimple (n, m) {  
+   signal input in[n*m];
+   signal input conv2d_1_weights[3][3];
+   signal input conv2d_1_bias[4];
+   signal input bn_1_a[4];
 
-   // Declaration of signals.  
-   signal input a;  
-   signal input b;  
-   signal output c;  
+   
 
-   // Constraints.  
-   c <== a * b;  
+    
 }
 
-component main = Multiplier2();
+component main = ImageRecognitionSimple();

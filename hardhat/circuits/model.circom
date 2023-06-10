@@ -1,4 +1,4 @@
-pragma circom 2.0.0;
+pragma circom 2.1.5;
 include "../node_modules/circomlib-ml/circuits/Conv2D.circom";
 include "../node_modules/circomlib-ml/circuits/Dense.circom";
 include "../node_modules/circomlib-ml/circuits/ArgMax.circom";
@@ -11,7 +11,7 @@ include "../node_modules/circomlib-ml/circuits/Flatten2D.circom";
 /*This circuit template checks that c is the multiplication of a and b.*/  
 
 template ImageRecognitionSimple (n, m) {  
-   signal input in[797*8];
+   signal input in[28][28][1];
    signal input conv2d_1_weights[3][3][1][4];
    signal input conv2d_1_bias[4];
    signal input bn_1_a[4];
@@ -42,7 +42,7 @@ template ImageRecognitionSimple (n, m) {
    component avg_1 = AveragePooling2D(26, 26, 4, 2, 2, 25);
 
 
-   for(var i=0; i<n; i++) {
+   for(var i=0; i<28; i++) {
          for(var j=0; j<28; j++) {
             conv2d_1.in[i][j][0] <== in[i*128+j];
          }

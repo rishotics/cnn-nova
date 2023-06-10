@@ -130,3 +130,8 @@ hardhat/artifacts
 hardhat/cache
 *.ptau
 hardhat/deployments
+
+#cargo files
+
+hardhat/target
+hardhat/Cargo.lock

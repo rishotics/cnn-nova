@@ -1,0 +1,12 @@
+[package]
+name = "zmage-recognition"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+nova-scotia = "0.4.0"
+nova-snark = { version = "0.21.0", default-features = false }
+serde_json = "1.0.85"
+ff = { version = "0.13", features = ["derive"]}

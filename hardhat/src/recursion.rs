@@ -1,4 +1,4 @@
-use std ::{collection::HashMap, env::current_dir, time::Instant, fs::File, io:: BufRead};
+use std ::{collections::HashMap, env::current_dir, time::Instant, fs::File, io:: BufRead};
 
 use nova_scotia::{
     circom::reader::load_r1cs, create_public_params, create_recursive_circuit, FileLocation, F1,
@@ -6,7 +6,7 @@ use nova_scotia::{
 };
 use nova_snark::{traits::Group, CompressedSNARK};
 use serde_json::{Value, from_reader};
-useff::PrimeField;
+use ff::PrimeField;
 
 pub fn main() {
     let iteration_count = 5;
@@ -22,7 +22,7 @@ pub fn main() {
     let json_reader = BufReader::new(json_file);
     let json: HashMap<String, Value> = from_reader(json_reader).unwrap();
 
-    println("json: {:?}", json);
+    println!("json: {:?}", json);
 
     let mut private_inputs = Vec::new();
     for _i in 0..integration_count {
@@ -46,7 +46,7 @@ pub fn main() {
         private_inputs,
         start_public_input.clone(),
         &pp
-    )
+    );
 
     println!("Recursive circuit created in {:?}", start.elapsed());
 

@@ -184,4 +184,4 @@ template ImageRecognitionSimple (n, m) {
    
 }
 
-component main = ImageRecognitionSimple(28, 28);
+// component main = ImageRecognitionSimple(28, 28);

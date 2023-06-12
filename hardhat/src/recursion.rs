@@ -13,11 +13,11 @@ pub fn main() {
     //  // `unwrap` returns a `panic` when it receives a `None`.
     let root = current_dir().unwrap();
     println!("Root: {:?}", root);
-    let circuit_file = root.join("resursion_test.r1cs");
+    let circuit_file = root.join("circuits/build/recursion_test.r1cs");
     let r1cs = load_r1cs(&FileLocation::PathBuf(circuit_file));
-    let witness_generator_wasm = root.join("recursive.wasm");
-
-    let json_filename = root.join("input.json");
+    let witness_generator_wasm = root.join("circuits/build/recursion_test_js/recursion_test.wasm");
+    println!("witness_generator_wasm: ");
+    let json_filename = root.join("src/input.json");
     let json_file = File::open(json_filename).unwrap();
     let json_reader = BufReader::new(json_file);
     let json: HashMap<String, Value> = from_reader(json_reader).unwrap();
@@ -28,9 +28,12 @@ pub fn main() {
     for _i in 0..integration_count {
         private_inputs.push(json.clone());
     }
+    println!("private_inputs generated ");
     // //from_str_vartime ->Interpret a string of numbers as a (congruent) prime field element. Does not accept unnecessary leading zeroes or a blank string.
     // // these input go inside the first iteration of the circuit folding
-    let start_public_input = vec![F1::from_str_vartime("0").unwrap()];
+    let start_public_input = vec![F1::from(10), F1::from(10)];
+
+    println!("start_public_input: {:?}", start_public_input);
 
 
     // // // 

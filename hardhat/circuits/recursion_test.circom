@@ -6,7 +6,7 @@ include "./model_test.circom";
 
 template RecursionModel() {
 
-    signal input step_in[1];
+    signal input step_in[2];
 
     signal input in[4][4][1];
     signal input conv2d_1_weights[4][4][1][1];
@@ -18,11 +18,11 @@ template RecursionModel() {
     // signal input bn_2_a[16];
     // signal input bn_2_b[16];
 
-    signal output step_out[1];
+    signal output step_out[2];
 
 
     component model = ImageRecognitionSimple(28,28);
-    // component modelHash = GetModelHash();
+    // // component modelHash = GetModelHash();
 
     model.in <== in;
     model.conv2d_1_weights <== conv2d_1_weights;
@@ -49,5 +49,8 @@ template RecursionModel() {
     // poseidon[1].inputs[0] <== step_in[1];
     // poseidon[1].inputs[1] <== model.out;
 
-    step_out[0] <== model.out[0][0][0];
+    step_out[0] <== model.out[0][0][0] + 1;
+    step_out[1] <== step_in[0] + step_in[1];
 }
+
+component main { public [step_in] } = RecursionModel();

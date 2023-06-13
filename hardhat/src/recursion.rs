@@ -48,25 +48,26 @@ pub fn main() {
         private_inputs,
         start_public_input.clone(),
         &pp
-    );
+    )
+    .unwrap();
 
     println!("Recursive circuit created in {:?}", start.elapsed());
 
-    // println!("Verifying recursive proof");
+    println!("Verifying recursive proof");
 
-    // let z0_secondary = vec![<G2 as Group>::Scalar::zero()];
+    let z0_secondary = vec![<G2 as Group>::Scalar::zero()];
 
-    // println!("z0_secondary: {:?}", z0_secondary);
+    println!("z0_secondary: {:?}", z0_secondary);
 
-    // let start = Instant::now();
-    // let result = recursive_snark.verify(
-    //     &pp,
-    //     iteration_count,
-    //     start_public_input.clone(),
-    //     z0_secondary.clone(),
-    // );
+    let start = Instant::now();
+    let result = recursive_snark.verify(
+        &pp,
+        integration_count,
+        start_public_input.clone(),
+        z0_secondary.clone(),
+    );
 
-    // println!("Recursive proof verified in {:?}", start.elapsed());
+    println!("Recursive proof verified in {:?}", start.elapsed());
 
     // assert!(result.is_ok());
 

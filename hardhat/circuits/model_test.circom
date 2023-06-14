@@ -21,7 +21,7 @@ template ImageRecognitionSimple (n, m) {
 //    signal input bn_2_a[16];
 //    signal input bn_2_b[16];
 
-   signal output out[1][1][1];
+   signal output out[1];
 
    // out <== 1 ;
 
@@ -180,7 +180,7 @@ template ImageRecognitionSimple (n, m) {
 //       softmax.in[i] <== dense.out[i];
 //    }
 
-   out <== conv2d_1.out;
+   out[0] <== conv2d_1.out[0][0][0];
    
 }
 

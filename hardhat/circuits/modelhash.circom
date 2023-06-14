@@ -2,7 +2,7 @@ pragma circom 2.1.5;
 
 include "../node_modules/circomlib/circuits/mimc.circom";
 
-template GetModelHash{
+template GetModelHash(){
 
     signal input in[1000];
     signal output out;

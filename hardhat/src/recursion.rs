@@ -69,18 +69,18 @@ pub fn main() {
 
     println!("Recursive proof verified in {:?}", start.elapsed());
 
-    // assert!(result.is_ok());
+    assert!(result.is_ok());
 
-    // // compressed snark
-    // let start = Instant::now();
-    // let (pk, vk) = CompressedSNARK::<_, _, _, _, S1, S2>::setup(&pp).unwrap();
-    // let res = CompressedSNARK::<_,_,_,_, S1, S2>::prove(&pp, &pk, &recursive_snark);
-    // println!("Compressed proof created in {:?}", start.elapsed());
-    // assert!(res.is_ok());
+    // compressed snark
+    let start = Instant::now();
+    let (pk, vk) = CompressedSNARK::<_, _, _, _, S1, S2>::setup(&pp).unwrap();
+    let res = CompressedSNARK::<_,_,_,_, S1, S2>::prove(&pp, &pk, &recursive_snark);
+    println!("Compressed proof created in {:?}", start.elapsed());
+    assert!(res.is_ok());
 
-    // let compressed_snark = res.unwrap();
+    let compressed_snark = res.unwrap();
 
-    // //verify the compressed snark
-    // let res = compressed_snark.verify(&vk, iteration_count, start_public_input.clone(), z0_secondary,)
-    // assert!(res.is_ok());
+    //verify the compressed snark
+    let res = compressed_snark.verify(&vk, integration_count, start_public_input.clone(), z0_secondary,);
+    assert!(res.is_ok());
 }

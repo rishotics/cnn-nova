@@ -4,7 +4,7 @@
 The current article explores the possibility of combining the inference of a neural network model inside a zero knowledge circuit. The circuits are written in circom and dont cover all the inferences. All the repeated inferences are folded into a single instance. Then proofs for all these foldings are calculated recursively using pasta curves.
 
 ## What is Nova?
-![IVCs]()
+![IVCs](./recursion_ivc.png)
 
 
 Nova performs folding over R1CS constraint systems. R1CS is an arithmetization technique used for Nova deploys a scheme with relaxed R1CS at the begining and folding it N times. Relaxed R1CS means that the original R1CS is fed with a linear combination of two instances of solution vector. Let's assume that first solution vector is $s_1$ and second is $s_2$
